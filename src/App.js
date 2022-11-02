@@ -28,7 +28,7 @@ export default function App() {
   const [dropValues, setDropValues] = useState([]);
   const [selectYaxis, setSelectYaxis] = useState([]);
 
-
+// determineDropUp when page is scrolled or resized
   useEffect(() => {
     determineDropUp()
     window.addEventListener("scroll", determineDropUp)
@@ -51,6 +51,7 @@ const getYAxis = () => {
   setSelectYaxis(nextYaxis);
 }
 
+// if the Y axis of the menu is less than the center of viewport then return 'bottom' or else return 'top'
 const getDropValue = () => {
   const centerViewport = window.innerHeight / 2;
 
@@ -81,6 +82,7 @@ const getDropValue = () => {
                       className='react-select'
                       defaultValue={selectedOption}
                       options={options}
+                      // read index value of dropValues array
                       menuPlacement={dropValues[index]}
                     />
                     </div>
