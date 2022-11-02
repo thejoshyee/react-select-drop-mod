@@ -26,8 +26,7 @@ export default function App() {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const [dropValues, setDropValues] = useState([]);
-  const [Yaxis, setYaxis] = useState([]);
-
+  const [selectYaxis, setSelectYaxis] = useState([]);
 
 
   useEffect(() => {
@@ -46,20 +45,17 @@ export default function App() {
 const getYAxis = () => {
   const nextYaxis = menusRef.current.map(
     ref => {
-      // console.log("ref y axis", ref.current.getBoundingClientRect().y)
       return ref.current.getBoundingClientRect().y;
     }
   );
-  setYaxis(nextYaxis);
+  setSelectYaxis(nextYaxis);
 }
 
 const getDropValue = () => {
-
   const centerViewport = window.innerHeight / 2;
 
   const nextDropValue = menusRef.current.map(
     ref => {
-      
       const menuYaxis = ref.current.getBoundingClientRect().y;
 
       if (menuYaxis < centerViewport) {
@@ -72,9 +68,7 @@ const getDropValue = () => {
   setDropValues(nextDropValue);
 }
 
-
   return (
-    
       <div className="App" style={{width: '50%', padding: '2em'}}>
 
         {selectMenus.map((menu, index) => {
